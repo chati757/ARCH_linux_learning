@@ -145,7 +145,9 @@ root@archiso # passwd : set your password
 ### set bootloader for boot system [in rpi not use]
 ```
 # install grub
-root@archiso # pacman -S grub
+root@archiso # pacman -S grub linux headers linux-lts
+*linux-headers [many package have requiment]
+*linux-lts [secondary kernel for debug]
 
 # install bootloader 
 root@archiso # grub-install --target=i386-pc --recheck /dev/sdx
@@ -164,4 +166,7 @@ root@archiso # exit
 #unmount drive for prepare reboot
 root@archiso # umount /mnt/home
 root@archiso # umount /mnt
+
+#reboot your system
+root@archiso # reboot
 ```
