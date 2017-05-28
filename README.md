@@ -1,5 +1,4 @@
-# ARCH_linux_learning
-learning basic command to beginning archlinux
+# ARCH_linux installation
 
 # pre-install 
 
