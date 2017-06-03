@@ -130,10 +130,10 @@ root@archiso # nano /etc/locale.gen
  *find your country
 root@archiso # nano locale-gen
 
-#setting hotlink [hardlink]
+# setting hotlink [hardlink]
 root@archiso # ln -s /usr/share/zoneinfo/[your country]/[your city]
 
-#sync clock [hardware level]
+# sync clock [hardware level]
 root@archiso # hwclock --systohc --utc
 ```
 
@@ -160,13 +160,13 @@ root@archiso # grub-mkconfig -o /boot/grub/grub.cfg
 
 ### unmount stage
 ```
-#exit chroot
+# exit chroot
 root@archiso # exit 
 
-#unmount drive for prepare reboot
+# unmount drive for prepare reboot
 root@archiso # umount /mnt/home
 root@archiso # umount /mnt
 
-#reboot your system
+# reboot your system
 root@archiso # reboot
 ```
