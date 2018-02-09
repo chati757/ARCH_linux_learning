@@ -91,21 +91,29 @@ root@archiso # mount /dev/sdxX /mnt/home [ex.sda3] : mount user drive
 root@archiso # mount
 ```
 
-### install base [basic software in arch][allow to download basic software and file system to root]
+### install base [basic software in arch][allow to download basic software and file system at root]
 ```
 root@archiso # pacstrap -i /mnt base
 ```
 
-### create files system and mapping (create file system)(mount system files)(this part like a build drive system32 in window)
+### system and mapping (create file system)(mount system files)(kind like a drive system32 in window)(this part like a give information for system refer from mounted file previous steps)
 > symbol mean redirect output to overwrite destination file Ex. "hello" > test.txt 
 [generate fstab (file system) and mount by default refer from path /mnt and redirect all data output to /mnt/etc/fstab]
 ```
 root@archiso # genfstab -U -p /mnt > /mnt/etc/fstab
 ```
 
-### change root directory from cd-live to real hardrive [normally root directory is live in bin/bash]
+### change root directory from cd-live to real harddrive [normally root directory is live in bin/bash]
 ```
 root@archiso # arch-chroot /mnt bin/bash
+```
+
+### setting locale.gen [if missing this step your desktop might not boot up] 
+[because language is not set when system boot up.the system don't know how print text to talk with you.]
+```
+root@archiso # nano /etc/locale.gen : find and uncomment en_US.UTF-8 UTF-8 and en_US ISO-8859-1
+root@archiso # locale-gen : for generate language for system
+root@archiso # echo LANG=en_US.UTF-8 > /etc/locale.conf : for set by defult when compile anything and system
 ```
 
 ### wireless configuration
@@ -128,15 +136,13 @@ root@archiso # pacman -S iw
 
 ### time setting
 ```
-root@archiso # nano /etc/locale.gen 
- *find your country
-root@archiso # nano locale-gen
-
 # setting hotlink [hardlink]
-root@archiso # ln -s /usr/share/zoneinfo/[your country]/[your city]
+root@archiso # ln -sf /usr/share/zoneinfo/[your country]/[your city] /etc/localtime
 
 # sync clock [hardware level]
 root@archiso # hwclock --systohc --utc
+# build image from preset for hook syetem [Bash script used to create an initial ramdisk environment][some Bash script before init stage]
+root@archiso # mkinitcpio -p linux
 ```
 
 ### set root password
