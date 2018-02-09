@@ -91,19 +91,21 @@ root@archiso # mount /dev/sdxX /mnt/home [ex.sda3] : mount user drive
 root@archiso # mount
 ```
 
-### install base [basic software in arch]
+### install base [basic software in arch][allow to download basic software and file system to root]
 ```
 root@archiso # pacstrap -i /mnt base
 ```
 
-### create files system mapping
+### create files system and mapping (create file system)(mount system files)(this part like a build drive system32 in window)
+> symbol mean redirect output to overwrite destination file Ex. "hello" > test.txt 
+[generate fstab (file system) and mount by default refer from path /mnt and redirect all data output to /mnt/etc/fstab]
 ```
-root@archiso # genfstab -U -p /mnt >> /mnt/etc/fstab
+root@archiso # genfstab -U -p /mnt > /mnt/etc/fstab
 ```
 
-### change root directory for current running process
+### change root directory from cd-live to real hardrive [normally root directory is live in bin/bash]
 ```
-root@archiso # arch-chroot /mnt : change root directory to [/mnt]
+root@archiso # arch-chroot /mnt bin/bash
 ```
 
 ### wireless configuration
