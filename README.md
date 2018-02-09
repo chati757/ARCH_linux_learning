@@ -136,12 +136,17 @@ root@archiso # pacman -S iw
 
 ### time setting
 ```
-# setting hotlink [hardlink]
+# setting hotlink [hardlink] [easy to get next time]
 root@archiso # ln -sf /usr/share/zoneinfo/[your country]/[your city] /etc/localtime
 
 # sync clock [hardware level]
 root@archiso # hwclock --systohc --utc
-# build image from preset for hook syetem [Bash script used to create an initial ramdisk environment][some Bash script before init stage]
+```
+
+### make kernel (initial environment when boot)[build in kernel stage]
+```
+# build image from preset for hook syetem [Bash script used to create an initial ramdisk environment][some Bash script before init stage][we need an initial kernal to boot into drive not live-cd][make kernal stage > init env to boot in ]
+[by default motherboard and bios (hardware) doesn't know how to read our partitions so that is allow initial that system]
 root@archiso # mkinitcpio -p linux
 ```
 
